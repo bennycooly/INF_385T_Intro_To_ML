@@ -39,16 +39,12 @@ class RegressionLab():
     def gen_quadratic_dataset(self, num_samples=1000, a=1, b=2, c=1, x_max=4):
         self.X = x_max * np.random.rand(num_samples, 1)
         self.y = (a * self.X * self.X) + (b * self.X) + c + np.random.randn(num_samples, 1)
-        plt.plot(self.X, self.y, "b.")
-        plt.savefig("q1/quadratic_dataset.png")
-        # plt.show()
     
     def load_wine_dataset(self):
         df = pandas.read_csv("datasets/winequality-red.csv", sep=';')
         df_ndarr = df.values
         # split into x and y
         self.X, self.y = np.hsplit(df_ndarr, [11])
-        # plt.show()
     
     def split_dataset(self, test_size=0.2):
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=test_size, random_state=42)
