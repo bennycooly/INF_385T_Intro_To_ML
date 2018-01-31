@@ -81,48 +81,60 @@ class RegressionLab():
         
     
     def save_plots(self):
-        plt.figure(0)
+        plt.figure()
         plt.plot(self.X, self.y, "b.")
-        plt.savefig("q1/quadratic_dataset.png")
+        plt.savefig("q1/dataset.png")
+        plt.clf()
+        plt.close()
         
         # linear
-        plt.figure(1)
+        plt.figure()
         plt.plot(self.X_test, self.y_test, "b.")
         plt.plot(self.X_test, self.y_pred_lr, "r-")
         plt.savefig("q1/linear_regression.png")
+        plt.clf()
+        plt.close()
 
         # ridge
-        plt.figure(2)
+        plt.figure()
         plt.plot(self.X_test, self.y_test, "b.")
         plt.plot(self.X_test, self.y_pred_ridge, "r-")
         plt.savefig("q1/ridge_regression.png")
+        plt.clf()
+        plt.close()
 
         # lasso
-        plt.figure(3)
+        plt.figure()
         plt.plot(self.X_test, self.y_test, "b.")
         plt.plot(self.X_test, self.y_pred_lasso, "r-")
         plt.savefig("q1/lasso_regression.png")
+        plt.clf()
+        plt.close()
 
         # polynomial
         # plot the x feature
-        plt.figure(4)
+        plt.figure()
         X_poly_test_split = np.array(np.hsplit(self.X_poly_test, 2)[0])
+        print(X_poly_test_split.shape)
         plt.plot(X_poly_test_split, self.y_test, "b.")
         plt.plot(X_poly_test_split, self.y_pred_poly, "r.")
+        plt.savefig("q1/poly_regression.png")
+        plt.clf()
+        plt.close()
 
     def print_statistics(self):
         # calculate error
         print("MAE for linear regression: ", mean_absolute_error(self.y_test, self.y_pred_lr))
-        print("R Correlation Coefficient for linear regression: ", pearsonr(self.y_test, self.y_pred_lr)[0])
+        print("Correlation Coefficient for linear regression: ", pearsonr(self.y_test, self.y_pred_lr)[0])
 
         print("MAE for ridge regression: ", mean_absolute_error(self.y_test, self.y_pred_ridge))
-        print("R Correlation Coefficient for ridge regression: ", pearsonr(self.y_test, self.y_pred_ridge)[0])
+        print("Correlation Coefficient for ridge regression: ", pearsonr(self.y_test, self.y_pred_ridge)[0])
 
         print("MAE for lasso regression: ", mean_absolute_error(self.y_test, self.y_pred_lasso))
-        print("R Correlation Coefficient for lasso regression: ", pearsonr(self.y_test, np.reshape(self.y_pred_lasso, (len(self.y_pred_lasso), 1)))[0])
+        print("Correlation Coefficient for lasso regression: ", pearsonr(self.y_test, np.reshape(self.y_pred_lasso, len(self.y_pred_lasso), 1))[0])
 
         print("MAE for polynomial regression: ", mean_absolute_error(self.y_test, self.y_pred_poly))
-        print("R Correlation Coefficient for polynomial regression: ", pearsonr(self.y_test, self.y_pred_poly)[0])
+        print("Correlation Coefficient for polynomial regression: ", pearsonr(self.y_test, self.y_pred_poly)[0])
 
 
 
