@@ -35,10 +35,6 @@ class ClassificationLab():
         self.X = None
         self.y = None
 
-        # stratified cross-validation
-        self.X_strat = None
-        self.y_strat = None
-
         # split dataset
         self.X_train = None
         self.y_train = None
@@ -251,9 +247,9 @@ def main():
     q1()
     print("\n")
 
-    # print("Running question 2")
-    # q2()
-    # print("\n")
+    print("Running question 2")
+    q2()
+    print("\n")
 
     print("Running question 3")
     q3()
