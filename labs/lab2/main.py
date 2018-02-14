@@ -58,7 +58,7 @@ class ClassificationLab():
 
         self.best_params_knn = {
             "metric": "manhattan",
-            "n_neighbors": 10
+            "n_neighbors": 35
         }
 
         self.best_params_svm = {
@@ -74,7 +74,7 @@ class ClassificationLab():
         self.feature_names = df.columns
         # print(self.feature_names)
 
-        # df_ndarr = df.sample(n=10000).values
+        # df_ndarr = df.sample(n=1000).values
         df_ndarr = df.values
         # split into x and y
         self.X, self.y = np.hsplit(df_ndarr, [23])
@@ -110,7 +110,7 @@ class ClassificationLab():
     def test_hyperparams_knn(self):
         print("Testing hyperparameters for K-Nearest Neighbors")
         tuned_parameters = {
-            "n_neighbors": range(1, 11),
+            "n_neighbors": range(1, 101),
             "metric": ["manhattan", "euclidean"]
         }
 
