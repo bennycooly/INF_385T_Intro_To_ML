@@ -215,16 +215,16 @@ class EnsembleLab():
 
 def q1():
     lab = PCALab()
-    # Dataset: LFW
-    # lab.load_dataset("LFW")
-    # lab.split_dataset()
-    # lab.transform_dataset()
+    Dataset: LFW
+    lab.load_dataset("LFW")
+    lab.split_dataset()
+    lab.transform_dataset()
 
-    # lab.train_classifier("DecisionTree")
-    # lab.plot_statistics()
+    lab.train_classifier("DecisionTree")
+    lab.plot_statistics()
 
-    # lab.train_classifier("KNN")
-    # lab.plot_statistics()
+    lab.train_classifier("KNN")
+    lab.plot_statistics()
 
     # Dataset: MNIST
     lab.load_dataset("MNIST")
