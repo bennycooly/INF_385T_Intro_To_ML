@@ -149,7 +149,7 @@ class VisionApi:
             len(analysis_json.get("description").get("tags")),
 
             # description captions
-            len(analysis_json.get("description").get("captions")),
+            self.extract_description_captions(analysis_json.get("description").get("captions")),
 
             # faces
             self.extract_faces(analysis_json.get("faces")),
@@ -167,10 +167,29 @@ class VisionApi:
     
 
     def extract_categories(self, categories):
-        return len(categories)
+        if len(categories) == 0:
+            return 0
+        sum = 0
+        for category in categories:
+            sum += category.get("score")
+        
+        return sum / len(categories)
     
     def extract_tags(self, tags):
-        return len(tags)
+        if len(tags) == 0:
+            return 0
+        sum = 0
+        for tag in tags:
+            sum += tag.get("confidence")
+        return sum / len(tags)
+    
+    def extract_description_captions(self, captions):
+        if len(captions) == 0:
+            return 0
+        sum = 0
+        for caption in captions:
+            sum += caption.get("confidence")
+        return sum / len(captions)
     
     def extract_faces(self, faces):
         return len(faces)

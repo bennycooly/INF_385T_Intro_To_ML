@@ -4,7 +4,7 @@
         "image": "VizWiz_test_000000020000.jpg"
     },
     {
-        "answerable": 1,
+        "answerable": 0,
         "image": "VizWiz_test_000000020001.jpg"
     },
     {
@@ -84,7 +84,7 @@
         "image": "VizWiz_test_000000020020.jpg"
     },
     {
-        "answerable": 1,
+        "answerable": 0,
         "image": "VizWiz_test_000000020021.jpg"
     },
     {

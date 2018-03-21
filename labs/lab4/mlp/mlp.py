@@ -100,6 +100,7 @@ class MLPLab():
         clf = GridSearchCV(estimator=MLPClassifier(activation="tanh", max_iter=100), param_grid=params)
         clf.fit(self.X_train, self.y_train)
         score = clf.score(self.X_test, self.y_test)
+        print(clf.cv_results_)
         print(clf.best_params_)
         print("Accuracy: " + str(score))
 
