@@ -14,21 +14,13 @@ from sklearn.preprocessing import StandardScaler
 # classifiers
 from sklearn.neural_network import MLPClassifier
 
-# ensemble
-from sklearn.ensemble import VotingClassifier
-from sklearn.ensemble import BaggingClassifier
-from sklearn.ensemble import AdaBoostClassifier
-
 # metrics
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score
 
 # datasets
-from sklearn.datasets import fetch_lfw_people
 from sklearn.datasets import fetch_mldata
-from sklearn.datasets import load_breast_cancer
-from sklearn.datasets import load_iris
 
 from sklearn.decomposition import PCA
 
@@ -91,10 +83,21 @@ class MLPLab():
         print(self.num_components_vals)
     
     def train_classifier(self):
+        hidden_layer_sizes = []
+        num_hidden_layers_range = range(1, 11)
+        neurons_per_layer_range = range(20, 220, 20)
+        for i in num_hidden_layers_range:
+            for j in neurons_per_layer_range:
+                layers_array = []
+                for k in range(i):
+                    layers_array.append(j)
+                hidden_layer_sizes.append(tuple(layers_array))
+        
+        print(hidden_layer_sizes)
         params = {
-            "hidden_layer_sizes": [(100), (100, 100), (100, 100, 100)]
+            "hidden_layer_sizes": hidden_layer_sizes
         }
-        clf = GridSearchCV(estimator=MLPClassifier(), param_grid=params)
+        clf = GridSearchCV(estimator=MLPClassifier(activation="tanh", max_iter=100), param_grid=params)
         clf.fit(self.X_train, self.y_train)
         score = clf.score(self.X_test, self.y_test)
         print(clf.best_params_)
